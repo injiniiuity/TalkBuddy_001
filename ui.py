@@ -20,19 +20,18 @@ with gr.Blocks(theme=gr.themes.Soft()) as iface1:
             choose_antoni = gr.Button("Antoni")
             choose_rachel = gr.Button("Rachel")
         with gr.Tab("목소리 생성"):
-            description="인물의 목소리를 복제합니다. 화자가 한 명인 mp3를 업로드하세요."
             auth_message= "목소리 mp3 파일을 업로드하세요."
-            userMp3 = gr.Audio(source="upload",label="mp3", info="Filepath of video/image that contains faces to use")
+            userMp3 = gr.Audio(type="filepath",source="upload",label="mp3", info="Filepath of video/image that contains faces to use")
             choose_create = gr.Button("생성 및 저장")
     choose_adam.click(f.adam)
     choose_antoni.click(f.antoni)
     choose_rachel.click(f.rachel)
-    choose_create.click(f.create)
+    choose_create.click(f.clone_voice, inputs=userMp3)
     
     
     with gr.Tab("캐릭터 외모"):
         with gr.Tab("이미지 업로드"):
-            image_input = gr.File(label="Video or Image", info="Filepath of video/image that contains faces to use")
+            image_input = gr.Image(type='pil',label="Video or Image", info="Filepath of video/image that contains faces to use")
             save_button1 = gr.Button("저장")
         with gr.Tab("이미지 생성"):
             text_input = gr.Textbox(label="생성할 이미지를 묘사하세요.")
