@@ -38,17 +38,15 @@ def rachel():
   global voice1
   voice1 = "Rachel"
 
-def create():
-  global voice1
-  voice1 = "Voice Name"
 
 #목소리 생성
 def clone_voice(userMp3):
   voice = clone(
     name="Voice Name",
     description="An old American male voice with a slight hoarseness in his throat. Perfect for news.",
-    files=["./voice.mp3"],
+    files=[userMp3],
     )
+  global  voice1
   voice1 = "Voice Name"
   
   
